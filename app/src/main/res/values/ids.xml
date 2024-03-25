@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="main_fragment" type="id"/>
+    <item name="login_fragment" type="id"/>
+    <item name="redactor_fragment" type="id"/>
+    <item name="toRedactorButton" type="id"/>
+</resources>
