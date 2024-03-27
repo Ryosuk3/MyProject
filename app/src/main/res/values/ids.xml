@@ -4,4 +4,6 @@
     <item name="login_fragment" type="id"/>
     <item name="redactor_fragment" type="id"/>
     <item name="toRedactorButton" type="id"/>
+    <item name="widget_preview" type="id"/>
+    <item name="widget_name" type="id"/>
 </resources>

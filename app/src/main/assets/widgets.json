@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Фото",
+    "year": 2020,
+    "image": "https://sindresorhus.com/apps/photo-widget/icon.png"
+  },
+  {
+    "name": "Заметки",
+    "year": 2022,
+    "image": "https://m.media-amazon.com/images/I/31tNxsOPDlL.png"
+
+  },
+  {
+    "name": "Календарь",
+    "year": 2023,
+    "image": "https://blog.shorouk.dev/wp-content/uploads/2021/02/image.png"
+  },
+  {
+    "name": "Погода",
+    "year": 2017,
+    "image": "https://developer.android.com/static/images/appwidgets/weather-size-5x2.png"
+  }
+
+]
