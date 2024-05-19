@@ -3,19 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/photoWidgetMainActivity">
-
+    app:startDestination="@id/mainFragment">
     <fragment
-        android:id="@+id/main_fragment"
+        android:id="@+id/mainFragment"
         android:name="com.example.mysamsungproject.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_main_fragment_to_photoWidgetMainActivity"
-            app:destination="@id/photoWidgetMainActivity" />
+            android:id="@+id/action_mainFragment_to_photoWidgetMainFragment3"
+            app:destination="@id/photoWidgetMainFragment3" />
     </fragment>
-    <activity
-        android:id="@+id/photoWidgetMainActivity"
-        android:name="com.example.mysamsungproject.photoWidget.PhotoWidgetMainActivity"
-        android:label="PhotoWidgetMainActivity" />
+    <fragment
+        android:id="@+id/photoWidgetMainFragment3"
+        android:name="com.example.mysamsungproject.ui.main.PhotoWidgetMainFragment"
+        android:label="photo_widget_main_fragment"
+        tools:layout="@layout/photo_widget_main_fragment" >
+        <action
+            android:id="@+id/action_photoWidgetMainFragment3_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
 </navigation>

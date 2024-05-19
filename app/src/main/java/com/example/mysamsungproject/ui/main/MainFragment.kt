@@ -56,12 +56,14 @@ class MainFragment : Fragment() {
         rec_view.adapter = adapter
         adapter.setOnItemClickListener(object : MyListAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                val bundle = Bundle()
-                bundle.putInt("key", 123123)
+                if (widgets[position].name == "Фото") {
+
+                    findNavController().navigate(R.id.action_mainFragment_to_photoWidgetMainFragment3)
+                }
 
             }
         })
-        
+
         return view
     }
 

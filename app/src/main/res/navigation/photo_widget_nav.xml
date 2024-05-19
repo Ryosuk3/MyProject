@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/photo_widget_nav"
+    app:startDestination="@id/photoWidgetMainFragment2">
+    <fragment
+        android:id="@+id/photoWidgetMainFragment2"
+        android:name="com.example.mysamsungproject.ui.main.PhotoWidgetMainFragment"
+        android:label="PhotoWidgetMainFragment" >
+        <action
+            android:id="@+id/action_photoWidgetMainFragment2_to_cornersDialog"
+            app:destination="@id/cornersDialog" />
+        <action
+            android:id="@+id/action_photoWidgetMainFragment2_to_cropImageActivity"
+            app:destination="@id/cropImageActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/cropImageActivity"
+        android:name="com.example.mysamsungproject.photoWidget.utils.CropImageActivity"
+        android:label="CropImageActivity" />
+    <dialog
+        android:id="@+id/cornersDialog"
+        android:name="com.example.mysamsungproject.photoWidget.utils.CornersDialog"
+        android:label="CornersDialog" >
+        <action
+            android:id="@+id/action_cornersDialog_to_photoWidgetMainFragment2"
+            app:destination="@id/photoWidgetMainFragment2" />
+    </dialog>
+</navigation>

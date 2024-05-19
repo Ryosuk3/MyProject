@@ -41,7 +41,7 @@
         </activity>
         <activity
             android:name=".photoWidget.utils.CropImageActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".photoWidget.PhotoWidgetMainActivity"
             android:exported="true">

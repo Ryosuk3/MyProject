@@ -1,4 +1,4 @@
-package com.example.mysamsungproject.photoWidget
+package com.example.mysamsungproject.ui.main
 
 import android.app.Application
 import android.content.Context
@@ -8,10 +8,10 @@ import androidx.lifecycle.MutableLiveData
 import com.example.mysamsungproject.R
 
 class PhotoWidgetMainViewModel(application: Application): AndroidViewModel(application) {
-    val imageUri: MutableLiveData<Uri?> = MutableLiveData()
-    val cornerRadius: MutableLiveData<Int> = MutableLiveData()
-    val isDateVisible: MutableLiveData<Boolean> = MutableLiveData()
-    val dateText: MutableLiveData<String?> = MutableLiveData()
+    val imageUri: MutableLiveData<Uri?> = MutableLiveData(null)
+    val cornerRadius: MutableLiveData<Int> = MutableLiveData(R.drawable.round0)
+    val isDateVisible: MutableLiveData<Boolean> = MutableLiveData(false)
+    val dateText: MutableLiveData<String?> = MutableLiveData(null)
 
     init {
         // Load saved data from SharedPreferences

@@ -1,148 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7FFF1CC"
-    android:orientation="vertical"
-    android:padding="10dp"
-    tools:context="photoWidget.PhotoWidgetMainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".photoWidget.PhotoWidgetMainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
 
 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        tools:layout="@layout/photo_widget_main_fragment" />
+</RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/relLay"
-        android:layout_width="256dp"
-        android:layout_height="256dp"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/round0"
-        android:backgroundTint="#00FFFFFF"
-        android:clipToOutline="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <TextView
-            android:id="@+id/dateText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
-            android:elevation="1dp"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:visibility="invisible" />
-
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/crop_image"
-            android:layout_width="256dp"
-            android:layout_height="256dp"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
-            app:cardBackgroundColor="#00FFFFFF"
-            app:cardElevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/crop_iv"
-                android:layout_width="256dp"
-                android:layout_height="256dp"
-                android:layout_gravity="center_horizontal"
-                android:background="#00FFFFFF"
-                app:srcCompat="@drawable/gallery"
-                tools:srcCompat="@drawable/gallery" />
-
-        </androidx.cardview.widget.CardView>
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:tint="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_back_ios_fill0_wght400_grad0_opsz24" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:tint="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/save_40dp_fill0_wght400_grad0_opsz40" />
-
-    <FrameLayout
-        android:layout_width="329dp"
-        android:layout_height="196dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_image">
-
-        <Button
-            android:id="@+id/rounding_corners_button"
-            android:layout_width="140dp"
-            android:layout_height="70dp"
-            android:layout_gravity="left"
-            android:backgroundTint="#4FCA80"
-            android:text="@string/rounding_corners_t"
-            android:textColor="#000000"
-            android:textColorLink="#47C773"
-            android:textSize="14sp"
-            app:cornerRadius="20dp" />
-
-        <Button
-            android:id="@+id/photo_date_button"
-            android:layout_width="140dp"
-            android:layout_height="70dp"
-            android:layout_gravity="right"
-            android:backgroundTint="#4FCA80"
-            android:foregroundGravity="top|right"
-            android:text="@string/date_photo_btn_t"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:cornerRadius="20dp" />
-
-        <Button
-            android:id="@+id/frequency_update_button"
-            android:layout_width="140dp"
-            android:layout_height="70dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:backgroundTint="#4FCA80"
-            android:text="@string/frequency_btn_t"
-            android:textColor="#000000"
-            app:cornerRadius="20dp" />
-
-    </FrameLayout>
-
-    <Button
-        android:id="@+id/btn_select_image"
-        android:layout_width="256dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#4FCA80"
-        android:text="@string/choose_photo_btn"
-        android:textColor="#000000"
-        app:cornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relLay" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
