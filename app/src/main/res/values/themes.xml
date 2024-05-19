@@ -17,6 +17,10 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+    <style name="AppTheme.PopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">#4FCA80</item>
+        <!-- Другие атрибуты стиля, если необходимо -->
+    </style>
 
     <style name="Theme.CropImage" parent="Base.Theme.CropImage" />
 

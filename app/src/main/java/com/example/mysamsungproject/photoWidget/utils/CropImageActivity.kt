@@ -56,42 +56,7 @@ class CropImageActivity : AppCompatActivity() {
 
     private fun saveImage() {
 
-        /*try {
-            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-            val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-            val imageFile = File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
-            val outputStream = FileOutputStream(imageFile)
-            val bitmap = binding.cropLayout.croppedImage
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-            outputStream.flush()
-            outputStream.close()
 
-
-            val contentValues = ContentValues().apply {
-                put(MediaStore.MediaColumns.DISPLAY_NAME, imageFile.name)
-                put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-                put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
-            }
-            val imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-
-
-            contentResolver.openOutputStream(imageUri!!).use { outputStream ->
-                if (outputStream!= null) {
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-                }
-            }
-
-            /*val resultIntent = Intent()
-            resultIntent.putExtra(CROP_IMAGE_URI_KEY, imageUri.toString())
-            setResult(Activity.RESULT_OK, resultIntent)
-            finish()*/
-            val resultIntent = Intent()
-            resultIntent.putExtra(CROP_IMAGE_URI_KEY, imageFile.toURI().toString())
-            setResult(Activity.RESULT_OK, resultIntent)
-            finish()
-        } catch (e: Exception) {
-            Toast.makeText(this@CropImageActivity, e.message, Toast.LENGTH_SHORT).show()
-        }*/
         try {
             val bitmap = binding.cropLayout.croppedImage
             val imageUri = saveImageToFile(bitmap)

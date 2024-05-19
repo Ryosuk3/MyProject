@@ -11,17 +11,15 @@
     tools:context=".ui.main.PhotoWidgetMainFragment">
 
 
-
     <RelativeLayout
         android:id="@+id/relLay"
         android:layout_width="256dp"
         android:layout_height="256dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="30dp"
         android:background="@drawable/round0"
         android:backgroundTint="#00FFFFFF"
         android:clipToOutline="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -39,7 +37,6 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:visibility="invisible" />
-
 
 
         <androidx.cardview.widget.CardView
@@ -88,14 +85,14 @@
         app:srcCompat="@drawable/save_40dp_fill0_wght400_grad0_opsz40" />
 
     <FrameLayout
-        android:layout_width="324dp"
-        android:layout_height="81dp"
+        android:id="@+id/frameLayout"
+        android:layout_width="335dp"
+        android:layout_height="83dp"
+        android:layout_marginEnd="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_image"
-        app:layout_constraintVertical_bias="0.378">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347">
 
         <Button
             android:id="@+id/rounding_corners_button"
@@ -127,15 +124,15 @@
         android:id="@+id/btn_select_image"
         android:layout_width="256dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#4FCA80"
         android:text="@string/choose_photo_btn"
         android:textColor="#000000"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relLay" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,16 +50,16 @@ internal fun updateAppWidget(
 
     val remoteViews = RemoteViews(context.packageName, R.layout.new_app_widget)
 
-    // Используйте setImageBitmap для установки изображения
+
     imageUri?.let {
         val bitmap = BitmapFactory.decodeStream(context.contentResolver.openInputStream(it))
         remoteViews.setImageViewBitmap(R.id.widget_image_view, bitmap)
     }
 
-    // Установка drawable в качестве фона FrameLayout
+
     remoteViews.setInt(R.id.widget_frame, "setBackgroundResource", cornerDraw)
 
-    // Установка текста даты и видимости
+
     remoteViews.setTextViewText(R.id.widgetDateText, dateText ?: "")
     remoteViews.setInt(R.id.widgetDateText,"setVisibility" ,if (isDateVisible) VISIBLE else INVISIBLE)
 

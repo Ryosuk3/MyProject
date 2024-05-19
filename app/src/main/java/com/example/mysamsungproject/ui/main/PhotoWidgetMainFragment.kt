@@ -2,7 +2,10 @@ package com.example.mysamsungproject.ui.main
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlarmManager
+import android.app.AlertDialog
 import android.app.Dialog
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
@@ -13,6 +16,7 @@ import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,14 +24,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import android.widget.Button
+import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.RemoteViews
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.mysamsungproject.R
+import com.example.mysamsungproject.Settings
 import com.example.mysamsungproject.databinding.PhotoWidgetMainFragmentBinding
 import com.example.mysamsungproject.photoWidget.NewAppWidget
 import com.example.mysamsungproject.photoWidget.utils.CornersDialog
@@ -35,6 +43,11 @@ import com.example.mysamsungproject.photoWidget.utils.CropImageActivity
 import com.example.mysamsungproject.photoWidget.utils.CropImageActivity.Companion.CROP_IMAGE_INTENT_KEY
 import com.example.mysamsungproject.photoWidget.utils.CropImageActivity.Companion.CROP_IMAGE_URI_KEY
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -52,8 +65,6 @@ class PhotoWidgetMainFragment : Fragment() {
     private lateinit var viewModel: PhotoWidgetMainViewModel
     private lateinit var pickImageLauncher: ActivityResultLauncher<Intent>
 
-    private var chosenPhotoDate: String? = null
-    private var isDateVisibleInWidget = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -141,9 +152,14 @@ class PhotoWidgetMainFragment : Fragment() {
             findNavController().navigate(R.id.action_photoWidgetMainFragment3_to_mainFragment)
         }
 
+
         binding.photoDateButton.setOnClickListener {
             viewModel.isDateVisible.value = !(viewModel.isDateVisible.value ?: false)
             updateWidgetWithDateText(viewModel.dateText.value, viewModel.isDateVisible.value!!)
+        }
+
+        binding.imageSave.setOnClickListener {
+            viewModel.saveSettingsToFirebase()
         }
 
         pickImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -211,11 +227,26 @@ class PhotoWidgetMainFragment : Fragment() {
 
         if (requestCode == 12 && resultCode == Activity.RESULT_OK){
             if (data != null){
-                val imageUriString = data.getStringExtra(CROP_IMAGE_URI_KEY)
-                val imageUri = Uri.parse(imageUriString)
-                binding.cropIv.setImageURI(imageUri)
-                viewModel.imageUri.value=imageUri
-                updateWidgetWithImage(imageUri)
+                val imageUris = mutableListOf<Uri>()
+                if (data.clipData != null) {
+                    val count = data.clipData!!.itemCount
+                    for (i in 0 until count) {
+                        val imageUri = data.clipData!!.getItemAt(i).uri
+                        imageUris.add(imageUri)
+                    }
+                } else if (data.data != null) {
+                    val imageUri = data.data
+                    imageUris.add(imageUri!!)
+                }
+                // Отправляем каждую выбранную фотографию на обрезку
+                imageUris.forEach { uri ->
+                    requireActivity().contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    cropImage(uri)
+                    viewModel.imageUri.value = uri
+                    viewModel.dateText.value = getFormattedPhotoDate(uri)
+                    viewModel.isDateVisible.value = false
+                    updateWidgetWithImage(uri)
+                }
             }
         }
     }
@@ -326,7 +357,22 @@ class PhotoWidgetMainFragment : Fragment() {
         saveImageUriInPrefs(uri)
     }
 
+    private fun updateWidgetWithFrequency(intervalMinutes: Int) {
+        val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val widgetIntent = Intent(requireContext(), NewAppWidget::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(requireContext(), 0, widgetIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
+        // Устанавливаем интервал обновления виджета с заданным количеством минут
+        val intervalMillis = intervalMinutes * 60 * 1000L
+        val triggerAtMillis = SystemClock.elapsedRealtime()
+
+        alarmManager.setRepeating(
+            AlarmManager.ELAPSED_REALTIME,
+            triggerAtMillis,
+            intervalMillis,
+            pendingIntent
+        )
+    }
 
     private  fun setDrawableResRadius(relLay: RelativeLayout,draw: Int){
         relLay.setBackgroundResource(0)

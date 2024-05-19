@@ -11,7 +11,12 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_photoWidgetMainFragment3"
-            app:destination="@id/photoWidgetMainFragment3" />
+            app:destination="@id/photoWidgetMainFragment3"
+            app:popUpTo="@id/photoWidgetMainFragment3"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/photoWidgetMainFragment3"
@@ -21,6 +26,34 @@
         <action
             android:id="@+id/action_photoWidgetMainFragment3_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:popUpTo="@id/mainFragment" />
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.mysamsungproject.ui.main.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.mysamsungproject.ui.main.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
 </navigation>

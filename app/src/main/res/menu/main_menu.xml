@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_logIn"
+        android:icon="@drawable/account_circle_40dp_fill0_wght400_grad0_opsz40"
+        android:title="Войти" />
+    <item
+        android:id="@+id/action_Sync"
+        android:icon="@drawable/sync_40dp_fill0_wght400_grad0_opsz40"
+        android:title="Импорт настроек" />
+    <item
+        android:id="@+id/action_logOut"
+        android:icon="@drawable/logout_40dp_fill0_wght400_grad0_opsz40"
+        android:title="Выйти" />
+</menu>

@@ -12,8 +12,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/icon"
+
         android:supportsRtl="true"
         android:theme="@style/Theme.CropImage"
         tools:targetApi="31"
@@ -42,15 +42,7 @@
         <activity
             android:name=".photoWidget.utils.CropImageActivity"
             android:exported="true" />
-        <activity
-            android:name=".photoWidget.PhotoWidgetMainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
