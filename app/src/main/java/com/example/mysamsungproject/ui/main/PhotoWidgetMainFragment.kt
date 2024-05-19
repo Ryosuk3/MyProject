@@ -238,7 +238,7 @@ class PhotoWidgetMainFragment : Fragment() {
                     val imageUri = data.data
                     imageUris.add(imageUri!!)
                 }
-                // Отправляем каждую выбранную фотографию на обрезку
+
                 imageUris.forEach { uri ->
                     requireActivity().contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     cropImage(uri)
@@ -284,7 +284,7 @@ class PhotoWidgetMainFragment : Fragment() {
         for (widgetId in widgetIds) {
             val remoteViews = RemoteViews(requireContext().packageName, R.layout.new_app_widget)
 
-            // Update image
+
             uri?.let {
                 val inputStream = requireContext().contentResolver.openInputStream(it)
                 val options = BitmapFactory.Options().apply { inSampleSize = 4 }
@@ -292,11 +292,11 @@ class PhotoWidgetMainFragment : Fragment() {
                 remoteViews.setImageViewBitmap(R.id.widget_image_view, bitmap)
             }
 
-            // Update date text
+
             remoteViews.setTextViewText(R.id.widgetDateText, dateText ?: "")
             remoteViews.setViewVisibility(R.id.widgetDateText, if (isDateVisible) View.VISIBLE else View.INVISIBLE)
 
-            // Update corner radius
+
             cornerRadius?.let {
                 remoteViews.setInt(R.id.widget_frame, "setBackgroundResource", it)
             }
@@ -357,22 +357,7 @@ class PhotoWidgetMainFragment : Fragment() {
         saveImageUriInPrefs(uri)
     }
 
-    private fun updateWidgetWithFrequency(intervalMinutes: Int) {
-        val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val widgetIntent = Intent(requireContext(), NewAppWidget::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(requireContext(), 0, widgetIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        // Устанавливаем интервал обновления виджета с заданным количеством минут
-        val intervalMillis = intervalMinutes * 60 * 1000L
-        val triggerAtMillis = SystemClock.elapsedRealtime()
-
-        alarmManager.setRepeating(
-            AlarmManager.ELAPSED_REALTIME,
-            triggerAtMillis,
-            intervalMillis,
-            pendingIntent
-        )
-    }
 
     private  fun setDrawableResRadius(relLay: RelativeLayout,draw: Int){
         relLay.setBackgroundResource(0)

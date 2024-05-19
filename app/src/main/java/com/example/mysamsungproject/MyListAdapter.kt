@@ -33,15 +33,14 @@ class MyListAdapter(val list: List<Widgets>): RecyclerView.Adapter<MyListAdapter
     override fun onBindViewHolder(holder: MyView, position: Int) {
         holder.bName.text = list[position].name
 
-        // Преобразуем строковое название ресурса в идентификатор ресурса
+
         val context = holder.itemView.context
         val imageId = context.resources.getIdentifier(list[position].image, "drawable", context.packageName)
 
         if (imageId != 0) {
             holder.bImage.setImageResource(imageId)
         } else {
-            // Обработка случая, когда идентификатор не найден
-             // Замените на ваш placeholder
+
         }
 
 
