@@ -227,26 +227,11 @@ class PhotoWidgetMainFragment : Fragment() {
 
         if (requestCode == 12 && resultCode == Activity.RESULT_OK){
             if (data != null){
-                val imageUris = mutableListOf<Uri>()
-                if (data.clipData != null) {
-                    val count = data.clipData!!.itemCount
-                    for (i in 0 until count) {
-                        val imageUri = data.clipData!!.getItemAt(i).uri
-                        imageUris.add(imageUri)
-                    }
-                } else if (data.data != null) {
-                    val imageUri = data.data
-                    imageUris.add(imageUri!!)
-                }
-
-                imageUris.forEach { uri ->
-                    requireActivity().contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                    cropImage(uri)
-                    viewModel.imageUri.value = uri
-                    viewModel.dateText.value = getFormattedPhotoDate(uri)
-                    viewModel.isDateVisible.value = false
-                    updateWidgetWithImage(uri)
-                }
+                val imageUriString = data.getStringExtra(CROP_IMAGE_URI_KEY)
+                val imageUri = Uri.parse(imageUriString)
+                binding.cropIv.setImageURI(imageUri)
+                viewModel.imageUri.value=imageUri
+                updateWidgetWithImage(imageUri)
             }
         }
     }

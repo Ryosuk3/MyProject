@@ -24,7 +24,11 @@ class PhotoWidgetMainViewModel(application: Application): AndroidViewModel(appli
     val dateText: MutableLiveData<String?> = MutableLiveData(null)
 
     init {
-        loadFromPrefs()
+        val prefs = application.getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
+        imageUri.value = prefs.getString("image_uri", null)?.let { Uri.parse(it) }
+        cornerRadius.value = prefs.getInt("corner_draw_key", R.drawable.round0)
+        isDateVisible.value = prefs.getBoolean("date_visibility", false)
+        dateText.value = prefs.getString("date_text", null)
     }
 
     private fun loadFromPrefs() {
