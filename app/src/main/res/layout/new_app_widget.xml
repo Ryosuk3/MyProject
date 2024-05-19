@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widget_frame"
+    android:layout_width="256dp"
+    android:layout_height="256dp"
+    android:background="@drawable/round0"
+    android:clipToOutline="true">
+
+    <TextView
+        android:id="@+id/widgetDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginBottom="8dp"
+        android:elevation="1dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/widget_image_view"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+
+        />
+
+</RelativeLayout>

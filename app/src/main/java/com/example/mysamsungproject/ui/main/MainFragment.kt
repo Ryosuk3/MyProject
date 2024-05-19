@@ -42,7 +42,7 @@ class MainFragment : Fragment() {
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
-        val redactor_button = binding.button // Инициализация кнопки
+
         rec_view = binding.recyclerView
         val result = requireActivity().assets.open("widgets.json").bufferedReader().use { it.readText() }
         Log.d("RRR",result.toString())
@@ -61,11 +61,7 @@ class MainFragment : Fragment() {
 
             }
         })
-        redactor_button.setOnClickListener{
-            val bundle = Bundle()
-            bundle.putInt("key", 123123)
-            
-        }
+        
         return view
     }
 

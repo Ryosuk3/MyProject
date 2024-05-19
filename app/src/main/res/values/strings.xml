@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Custom Widgets</string>
-    <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -9,7 +8,16 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="main_fragment_button_text">Перейти к редактору</string>
+    <string name="choose_photo_btn">Выбрать фотографии</string>
+    <string name="select_image">Select Image</string>
+    <string name="crop_image">Обрезка фотографии</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="rounding_corners_t">Скругление углов</string>
+    <string name="date_photo_btn_t">Дата фотографии</string>
+    <string name="frame_btn_t">Рамка</string>
+    <string name="frequency_btn_t">Частота смены фотографий</string>
 </resources>
