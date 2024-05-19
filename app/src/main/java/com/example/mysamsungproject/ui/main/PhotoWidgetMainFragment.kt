@@ -41,6 +41,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import java.io.File
 import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -304,6 +305,9 @@ class PhotoWidgetMainFragment : Fragment() {
 
 
     private fun updateWidgetWithImage(uri: Uri) {
+
+
+
         val widgetManager = AppWidgetManager.getInstance(requireContext())
         val widgetIds = widgetManager.getAppWidgetIds(ComponentName(requireContext(), NewAppWidget::class.java))
 
@@ -355,5 +359,7 @@ class PhotoWidgetMainFragment : Fragment() {
         editor.putString("date_text", dateText)
         editor.apply()
     }
+
+
 
 }

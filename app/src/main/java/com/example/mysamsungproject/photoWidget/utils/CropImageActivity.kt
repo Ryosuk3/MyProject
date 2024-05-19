@@ -2,6 +2,7 @@ package com.example.mysamsungproject.photoWidget.utils
 
 import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -54,7 +55,8 @@ class CropImageActivity : AppCompatActivity() {
     }
 
     private fun saveImage() {
-        try {
+
+        /*try {
             val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
             val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
             val imageFile = File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
@@ -79,6 +81,20 @@ class CropImageActivity : AppCompatActivity() {
                 }
             }
 
+            /*val resultIntent = Intent()
+            resultIntent.putExtra(CROP_IMAGE_URI_KEY, imageUri.toString())
+            setResult(Activity.RESULT_OK, resultIntent)
+            finish()*/
+            val resultIntent = Intent()
+            resultIntent.putExtra(CROP_IMAGE_URI_KEY, imageFile.toURI().toString())
+            setResult(Activity.RESULT_OK, resultIntent)
+            finish()
+        } catch (e: Exception) {
+            Toast.makeText(this@CropImageActivity, e.message, Toast.LENGTH_SHORT).show()
+        }*/
+        try {
+            val bitmap = binding.cropLayout.croppedImage
+            val imageUri = saveImageToFile(bitmap)
             val resultIntent = Intent()
             resultIntent.putExtra(CROP_IMAGE_URI_KEY, imageUri.toString())
             setResult(Activity.RESULT_OK, resultIntent)
@@ -87,4 +103,22 @@ class CropImageActivity : AppCompatActivity() {
             Toast.makeText(this@CropImageActivity, e.message, Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun saveImageToFile(bitmap: Bitmap): Uri {
+        val directory = getDir("images", Context.MODE_PRIVATE)
+        val files = directory.listFiles()
+
+        files?.forEach { file ->
+            val fileName = file.name
+            if (fileName.matches(Regex("^photo.*\\.jpg$"))) {
+                file.delete()
+            }
+        }
+        val file = File(directory, "photo_${System.currentTimeMillis()}.jpg")
+        val outputStream = FileOutputStream(file)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        outputStream.close()
+        return Uri.fromFile(file)
+    }
+
 }
