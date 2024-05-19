@@ -58,13 +58,13 @@ class MainFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 val bundle = Bundle()
                 bundle.putInt("key", 123123)
-                findNavController().navigate(R.id.action_mainFragment_to_redactorFragment, bundle)
+
             }
         })
         redactor_button.setOnClickListener{
             val bundle = Bundle()
             bundle.putInt("key", 123123)
-            findNavController().navigate(R.id.action_mainFragment_to_redactorFragment, bundle)
+            
         }
         return view
     }
