@@ -1,11 +1,8 @@
-package com.example.mysamsungproject
-import android.os.Bundle
+package com.example.CustomWidgets
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.*
 import android.view.*
-import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.*
 
 

@@ -10,8 +10,6 @@
     android:padding="10dp"
     tools:context=".ui.main.PhotoWidgetMainFragment">
 
-
-
     <RelativeLayout
         android:id="@+id/relLay"
         android:layout_width="256dp"
@@ -24,7 +22,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <TextView
             android:id="@+id/dateText"
@@ -39,8 +36,6 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:visibility="invisible" />
-
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/crop_image"
@@ -76,7 +71,8 @@
         app:tint="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_back_ios_fill0_wght400_grad0_opsz24" />
+        app:srcCompat="@drawable/arrow_back_ios_fill0_wght400_grad0_opsz24"
+         />
 
     <ImageView
         android:id="@+id/imageSave"
@@ -85,7 +81,8 @@
         app:tint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/save_40dp_fill0_wght400_grad0_opsz40" />
+        app:srcCompat="@drawable/save_40dp_fill0_wght400_grad0_opsz40"
+         />
 
     <FrameLayout
         android:layout_width="324dp"

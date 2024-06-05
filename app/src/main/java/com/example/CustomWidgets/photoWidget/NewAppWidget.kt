@@ -1,4 +1,4 @@
-package com.example.mysamsungproject.photoWidget
+package com.example.CustomWidgets.photoWidget
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
@@ -8,7 +8,7 @@ import android.net.Uri
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.RemoteViews
-import com.example.mysamsungproject.R
+import com.example.CustomWidgets.R
 
 /**
  * Implementation of App Widget functionality.

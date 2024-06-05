@@ -1,22 +1,17 @@
-package com.example.mysamsungproject.photoWidget.utils
+package com.example.CustomWidgets.photoWidget.utils
 
 import android.app.Activity
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.widget.Toast
-import com.example.mysamsungproject.databinding.ActivityCropImageBinding
+import com.example.CustomWidgets.databinding.ActivityCropImageBinding
 import com.theartofdev.edmodo.cropper.CropImageView
 import java.io.File
 import java.io.FileOutputStream
-import java.text.SimpleDateFormat
-import java.util.Date
 
 class CropImageActivity : AppCompatActivity() {
 

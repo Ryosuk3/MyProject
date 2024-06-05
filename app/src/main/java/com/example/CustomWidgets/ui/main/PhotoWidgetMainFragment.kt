@@ -1,11 +1,8 @@
-package com.example.mysamsungproject.ui.main
+package com.example.CustomWidgets.ui.main
 
 import android.Manifest
 import android.app.Activity
-import android.app.AlarmManager
-import android.app.AlertDialog
 import android.app.Dialog
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
@@ -16,7 +13,6 @@ import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.SystemClock
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,8 +20,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
-import android.widget.Button
-import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.RemoteViews
 import android.widget.Toast
@@ -34,27 +28,20 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.mysamsungproject.R
-import com.example.mysamsungproject.Settings
-import com.example.mysamsungproject.databinding.PhotoWidgetMainFragmentBinding
-import com.example.mysamsungproject.photoWidget.NewAppWidget
-import com.example.mysamsungproject.photoWidget.utils.CornersDialog
-import com.example.mysamsungproject.photoWidget.utils.CropImageActivity
-import com.example.mysamsungproject.photoWidget.utils.CropImageActivity.Companion.CROP_IMAGE_INTENT_KEY
-import com.example.mysamsungproject.photoWidget.utils.CropImageActivity.Companion.CROP_IMAGE_URI_KEY
+import com.example.CustomWidgets.R
+import com.example.CustomWidgets.databinding.PhotoWidgetMainFragmentBinding
+import com.example.CustomWidgets.photoWidget.NewAppWidget
+import com.example.CustomWidgets.photoWidget.utils.CornersDialog
+import com.example.CustomWidgets.photoWidget.utils.CropImageActivity
+import com.example.CustomWidgets.photoWidget.utils.CropImageActivity.Companion.CROP_IMAGE_INTENT_KEY
+import com.example.CustomWidgets.photoWidget.utils.CropImageActivity.Companion.CROP_IMAGE_URI_KEY
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
-import java.io.File
 import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -149,7 +136,7 @@ class PhotoWidgetMainFragment : Fragment() {
 
         binding.imageBack.setOnClickListener{
 
-            findNavController().navigate(R.id.action_photoWidgetMainFragment3_to_mainFragment)
+            findNavController().navigateUp()
         }
 
 
@@ -160,6 +147,7 @@ class PhotoWidgetMainFragment : Fragment() {
 
         binding.imageSave.setOnClickListener {
             viewModel.saveSettingsToFirebase()
+            Toast.makeText(requireContext(),"Saved in Cloud",Toast.LENGTH_SHORT).show()
         }
 
         pickImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {

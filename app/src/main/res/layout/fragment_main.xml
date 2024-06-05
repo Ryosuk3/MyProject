@@ -17,8 +17,6 @@
             android:id="@+id/menu"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:src="@drawable/menu_40dp_fill0_wght400_grad0_opsz40"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

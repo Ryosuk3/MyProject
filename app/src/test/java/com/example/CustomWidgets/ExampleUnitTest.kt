@@ -1,4 +1,4 @@
-package com.example.mysamsungproject
+package com.example.CustomWidgets
 
 import org.junit.Test
 

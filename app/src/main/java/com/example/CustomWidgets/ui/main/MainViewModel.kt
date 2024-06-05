@@ -1,4 +1,4 @@
-package com.example.mysamsungproject.ui.main
+package com.example.CustomWidgets.ui.main
 
 import androidx.lifecycle.ViewModel
 

@@ -1,10 +1,7 @@
-package com.example.mysamsungproject
+package com.example.CustomWidgets
 
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
-import com.example.mysamsungproject.ui.main.MainFragment
 
 data class Widgets(val name: String, val image: String)
 class MainActivity : AppCompatActivity() {

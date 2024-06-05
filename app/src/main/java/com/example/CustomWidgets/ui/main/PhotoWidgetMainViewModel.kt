@@ -1,4 +1,4 @@
-package com.example.mysamsungproject.ui.main
+package com.example.CustomWidgets.ui.main
 
 import android.app.Application
 import android.content.ContentValues.TAG
@@ -7,13 +7,8 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.mysamsungproject.R
-import com.example.mysamsungproject.Settings
+import com.example.CustomWidgets.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 
 class PhotoWidgetMainViewModel(application: Application): AndroidViewModel(application) {
@@ -56,7 +51,7 @@ class PhotoWidgetMainViewModel(application: Application): AndroidViewModel(appli
             loadFromPrefs()
             val settings = hashMapOf(
                 "isVisible" to isDateVisible.value,
-                "radius" to cornerRadius.value
+                "radius" to cornerRadius.value?.toInt()
             )
             userSettingsRef.set(settings)
                 .addOnSuccessListener {

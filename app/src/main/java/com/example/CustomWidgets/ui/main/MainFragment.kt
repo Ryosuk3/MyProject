@@ -1,7 +1,5 @@
-package com.example.mysamsungproject.ui.main
+package com.example.CustomWidgets.ui.main
 
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -9,22 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mysamsungproject.MyListAdapter
-import com.example.mysamsungproject.R
-import com.example.mysamsungproject.Settings
-import com.example.mysamsungproject.Widgets
-import com.example.mysamsungproject.databinding.FragmentMainBinding
+import com.example.CustomWidgets.MyListAdapter
+import com.example.CustomWidgets.R
+import com.example.CustomWidgets.Widgets
+import com.example.CustomWidgets.databinding.FragmentMainBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.gson.GsonBuilder
 
 
@@ -81,7 +72,7 @@ class MainFragment : Fragment() {
         adapter.setOnItemClickListener(object : MyListAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 if (widgets[position].name == "Фото") {
-                    findNavController().navigate(R.id.action_mainFragment_to_photoWidgetMainFragment3)
+                    findNavController().navigate(R.id.action_mainFragment_to_photoWidgetMainFragment)
                 }
             }
         })

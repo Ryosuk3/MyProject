@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mysamsungproject"
+    namespace = "com.example.CustomWidgets"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.mysamsungproject"
+        applicationId = "com.example.CustomWidgets"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.example.mysamsungproject
+package com.example.CustomWidgets
 
 data class Settings(
     val isVisible: Boolean = false,

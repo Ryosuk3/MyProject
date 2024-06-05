@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:530769024150:android:86b4256ba3a19cb98cdeb7",
+        "mobilesdk_app_id": "1:530769024150:android:0af68d36c42227938cdeb7",
         "android_client_info": {
-          "package_name": "com.example.mysamsungproject"
+          "package_name": "com.example.CustomWidgets"
         }
       },
       "oauth_client": [

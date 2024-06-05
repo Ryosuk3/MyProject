@@ -4,34 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
     app:startDestination="@id/mainFragment">
+
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.mysamsungproject.ui.main.MainFragment"
+        android:name="com.example.CustomWidgets.ui.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_photoWidgetMainFragment3"
-            app:destination="@id/photoWidgetMainFragment3"
-            app:popUpTo="@id/photoWidgetMainFragment3"
+            android:id="@+id/action_mainFragment_to_photoWidgetMainFragment"
+            app:destination="@id/photoWidgetMainFragment"
+            app:popUpTo="@id/photoWidgetMainFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/photoWidgetMainFragment3"
-        android:name="com.example.mysamsungproject.ui.main.PhotoWidgetMainFragment"
+        android:id="@+id/photoWidgetMainFragment"
+        android:name="com.example.CustomWidgets.ui.main.PhotoWidgetMainFragment"
         android:label="photo_widget_main_fragment"
-        tools:layout="@layout/photo_widget_main_fragment" >
+        tools:layout="@layout/photo_widget_main_fragment">
         <action
-            android:id="@+id/action_photoWidgetMainFragment3_to_mainFragment"
+            android:id="@+id/action_photoWidgetMainFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.mysamsungproject.ui.main.LoginFragment"
+        android:name="com.example.CustomWidgets.ui.main.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
@@ -46,7 +49,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.mysamsungproject.ui.main.RegisterFragment"
+        android:name="com.example.CustomWidgets.ui.main.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register">
         <action

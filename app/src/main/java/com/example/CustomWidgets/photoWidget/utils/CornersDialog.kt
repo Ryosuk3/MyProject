@@ -1,4 +1,4 @@
-package com.example.mysamsungproject.photoWidget.utils
+package com.example.CustomWidgets.photoWidget.utils
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import com.example.mysamsungproject.R
+import com.example.CustomWidgets.R
 
 class CornersDialog: DialogFragment() {
     interface OnApplyListener {

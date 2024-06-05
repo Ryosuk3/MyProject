@@ -6,7 +6,7 @@
     app:startDestination="@id/photoWidgetMainFragment2">
     <fragment
         android:id="@+id/photoWidgetMainFragment2"
-        android:name="com.example.mysamsungproject.ui.main.PhotoWidgetMainFragment"
+        android:name="com.example.CustomWidgets.ui.main.PhotoWidgetMainFragment"
         android:label="PhotoWidgetMainFragment" >
         <action
             android:id="@+id/action_photoWidgetMainFragment2_to_cornersDialog"
@@ -17,11 +17,11 @@
     </fragment>
     <activity
         android:id="@+id/cropImageActivity"
-        android:name="com.example.mysamsungproject.photoWidget.utils.CropImageActivity"
+        android:name="com.example.CustomWidgets.photoWidget.utils.CropImageActivity"
         android:label="CropImageActivity" />
     <dialog
         android:id="@+id/cornersDialog"
-        android:name="com.example.mysamsungproject.photoWidget.utils.CornersDialog"
+        android:name="com.example.CustomWidgets.photoWidget.utils.CornersDialog"
         android:label="CornersDialog" >
         <action
             android:id="@+id/action_cornersDialog_to_photoWidgetMainFragment2"

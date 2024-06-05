@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Custom Widgets</string>
+    <string name="app_name" translatable="false">Custom Widgets</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
