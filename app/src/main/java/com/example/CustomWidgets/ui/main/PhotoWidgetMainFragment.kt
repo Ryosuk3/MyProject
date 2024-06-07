@@ -85,7 +85,26 @@ class PhotoWidgetMainFragment : Fragment() {
 
         viewModel.cornerRadius.observe(viewLifecycleOwner) { radius ->
             radius?.let {
-                setDrawableResRadius(binding.relLay, it)
+                val drawableRes = when (it) {
+                    0 -> R.drawable.round0
+                    10 -> R.drawable.round10
+                    20 -> R.drawable.round20
+                    30 -> R.drawable.round30
+                    40 -> R.drawable.round40
+                    50 -> R.drawable.round50
+                    60 -> R.drawable.round60
+                    70 -> R.drawable.round70
+                    80 -> R.drawable.round80
+                    90 -> R.drawable.round90
+                    100 -> R.drawable.round100
+                    110 -> R.drawable.round110
+                    120 -> R.drawable.round120
+                    130 -> R.drawable.round130
+                    140 -> R.drawable.round140
+                    150 -> R.drawable.round150
+                    else -> R.drawable.round0
+                }
+                setDrawableResRadius(binding.relLay, drawableRes)
                 saveCornerRadiusInPrefs(it)
             }
         }
@@ -120,12 +139,16 @@ class PhotoWidgetMainFragment : Fragment() {
             }
         }
 
+        binding.imageSync.setOnClickListener {
+            viewModel.loadSettingsFromFirebase()
+            updateWidget(viewModel.imageUri.value, viewModel.dateText.value, viewModel.isDateVisible.value ?: false, viewModel.cornerRadius.value)
+        }
+
         binding.roundingCornersButton.setOnClickListener {
             val dialog = CornersDialog()
             val applyListener = object : CornersDialog.OnApplyListener {
                 override fun onApply(value: Int) {
-                    var radius = value * 10
-                    radius=rounds[radius]!!
+                    val radius = value * 10
                     viewModel.cornerRadius.value = radius
                     updateWidgetWithCorners(radius)
                 }
@@ -257,37 +280,77 @@ class PhotoWidgetMainFragment : Fragment() {
         for (widgetId in widgetIds) {
             val remoteViews = RemoteViews(requireContext().packageName, R.layout.new_app_widget)
 
-
             uri?.let {
-                val inputStream = requireContext().contentResolver.openInputStream(it)
-                val options = BitmapFactory.Options().apply { inSampleSize = 4 }
-                val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
-                remoteViews.setImageViewBitmap(R.id.widget_image_view, bitmap)
+                try {
+                    val inputStream = requireContext().contentResolver.openInputStream(it)
+                    val options = BitmapFactory.Options().apply { inSampleSize = 4 }
+                    val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
+                    remoteViews.setImageViewBitmap(R.id.widget_image_view, bitmap)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    // Обработка ошибки
+                    remoteViews.setTextViewText(R.id.widget_image_view, "Ошибка при загрузке изображения")
+                }
             }
-
 
             remoteViews.setTextViewText(R.id.widgetDateText, dateText ?: "")
             remoteViews.setViewVisibility(R.id.widgetDateText, if (isDateVisible) View.VISIBLE else View.INVISIBLE)
 
-
             cornerRadius?.let {
-                remoteViews.setInt(R.id.widget_frame, "setBackgroundResource", it)
+                val drawableRes = when (it) {
+                    0 -> R.drawable.round0
+                    10 -> R.drawable.round10
+                    20 -> R.drawable.round20
+                    30 -> R.drawable.round30
+                    40 -> R.drawable.round40
+                    50 -> R.drawable.round50
+                    60 -> R.drawable.round60
+                    70 -> R.drawable.round70
+                    80 -> R.drawable.round80
+                    90 -> R.drawable.round90
+                    100 -> R.drawable.round100
+                    110 -> R.drawable.round110
+                    120 -> R.drawable.round120
+                    130 -> R.drawable.round130
+                    140 -> R.drawable.round140
+                    150 -> R.drawable.round150
+                    else -> R.drawable.round0
+                }
+                remoteViews.setInt(R.id.widget_frame, "setBackgroundResource", drawableRes)
             }
 
             widgetManager.updateAppWidget(widgetId, remoteViews)
         }
     }
 
-    private fun updateWidgetWithCorners(draw: Int) {
-        val widgetManager=AppWidgetManager.getInstance(requireContext())
+    private fun updateWidgetWithCorners(cornerRadius: Int) {
+        val widgetManager = AppWidgetManager.getInstance(requireContext())
         val widgetIds = widgetManager.getAppWidgetIds(ComponentName(requireContext(), NewAppWidget::class.java))
-
-        for (widgetId in widgetIds){
+        val drawableRes = when (cornerRadius) {
+            0 -> R.drawable.round0
+            10 -> R.drawable.round10
+            20 -> R.drawable.round20
+            30 -> R.drawable.round30
+            40 -> R.drawable.round40
+            50 -> R.drawable.round50
+            60 -> R.drawable.round60
+            70 -> R.drawable.round70
+            80 -> R.drawable.round80
+            90 -> R.drawable.round90
+            100 -> R.drawable.round100
+            110 -> R.drawable.round110
+            120 -> R.drawable.round120
+            130 -> R.drawable.round130
+            140 -> R.drawable.round140
+            150 -> R.drawable.round150
+            else -> R.drawable.round0
+        }
+        for (widgetId in widgetIds) {
             val remoteViews = RemoteViews(requireContext().packageName, R.layout.new_app_widget)
-             remoteViews.setInt(R.id.widget_frame, "setBackgroundResource", draw)
+            remoteViews.setInt(R.id.widget_frame, "setBackgroundResource", drawableRes)
             widgetManager.updateAppWidget(widgetId, remoteViews)
         }
-        saveCornerRadiusInPrefs(draw)
+        saveCornerRadiusInPrefs(cornerRadius)
     }
 
 
@@ -339,7 +402,7 @@ class PhotoWidgetMainFragment : Fragment() {
     private fun saveCornerRadiusInPrefs(radius: Int) {
         val sharedPreferences = requireActivity().getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putInt("corner_draw_key", radius)
+        editor.putInt("corner_radius", radius)  // Измените ключ на "corner_radius"
         editor.apply()
     }
 

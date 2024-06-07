@@ -6,10 +6,10 @@
             android:actionLayout="@layout/login_menu_item"
             android:icon="@drawable/account_circle_40dp_fill0_wght400_grad0_opsz40"
             android:title="Login" />
-        <item
+        <!-- <item
             android:id="@+id/nav_item2"
             android:icon="@drawable/sync_40dp_fill0_wght400_grad0_opsz40"
-            android:title="Sync" />
+            android:title="Sync" /> -->
         <item
             android:id="@+id/nav_item3"
             android:icon="@drawable/logout_40dp_fill0_wght400_grad0_opsz40"

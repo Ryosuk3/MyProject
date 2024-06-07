@@ -89,11 +89,11 @@ class MainFragment : Fragment() {
                     findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
                     true
                 }
-                R.id.nav_item2 -> {
+                /*R.id.nav_item2 -> {
                     val photoWidgetViewModel = ViewModelProvider(requireActivity()).get(PhotoWidgetMainViewModel::class.java)
                     photoWidgetViewModel.loadSettingsFromFirebase()
                     true
-                }
+                }*/
                 R.id.nav_item3 -> {
                     auth.signOut()
                     true
