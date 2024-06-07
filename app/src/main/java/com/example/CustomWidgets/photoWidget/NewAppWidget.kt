@@ -43,7 +43,7 @@ internal fun updateAppWidget(
     val prefs = context.getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
     val imageUriString = prefs.getString("image_uri", null)
     val imageUri = imageUriString?.let { Uri.parse(it) }
-    val cornerRadius = prefs.getInt("corner_draw_key", 0)  // Сохраненное целое значение угла
+    val cornerRadius = prefs.getInt("corner_draw_key", 0)
     val isDateVisible = prefs.getBoolean("date_visibility", false)
     val dateText = prefs.getString("date_text", "")
 

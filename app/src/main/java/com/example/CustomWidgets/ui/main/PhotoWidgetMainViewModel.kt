@@ -14,14 +14,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 class PhotoWidgetMainViewModel(application: Application) : AndroidViewModel(application) {
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     val imageUri: MutableLiveData<Uri?> = MutableLiveData(null)
-    val cornerRadius: MutableLiveData<Int> = MutableLiveData(0)  // Сохранение фактического значения угла
+    val cornerRadius: MutableLiveData<Int> = MutableLiveData(0)
     val isDateVisible: MutableLiveData<Boolean> = MutableLiveData(false)
     val dateText: MutableLiveData<String?> = MutableLiveData(null)
 
     init {
         val prefs = application.getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
         imageUri.value = prefs.getString("image_uri", null)?.let { Uri.parse(it) }
-        cornerRadius.value = prefs.getInt("corner_draw_key", 0)  // Измените ключ на "corner_radius"
+        cornerRadius.value = prefs.getInt("corner_draw_key", 0)
         isDateVisible.value = prefs.getBoolean("date_visibility", false)
         dateText.value = prefs.getString("date_text", null)
     }
@@ -30,7 +30,7 @@ class PhotoWidgetMainViewModel(application: Application) : AndroidViewModel(appl
         val prefs = getApplication<Application>().getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
         val editor = prefs.edit()
         editor.putString("image_uri", imageUri.value?.toString())
-        editor.putInt("corner_draw_key", cornerRadius.value ?: 0)  // Сохраняем целое значение угла
+        editor.putInt("corner_draw_key", cornerRadius.value ?: 0)
         editor.putBoolean("date_visibility", isDateVisible.value ?: false)
         editor.putString("date_text", dateText.value)
         editor.apply()
@@ -42,7 +42,7 @@ class PhotoWidgetMainViewModel(application: Application) : AndroidViewModel(appl
             val userSettingsRef = firestore.collection("userSettings").document(currentUser.uid)
             val settings = hashMapOf(
                 "isVisible" to isDateVisible.value,
-                "radius" to cornerRadius.value  // Сохранение фактического значения угла
+                "radius" to cornerRadius.value
             )
             userSettingsRef.set(settings)
                 .addOnSuccessListener {
@@ -62,7 +62,7 @@ class PhotoWidgetMainViewModel(application: Application) : AndroidViewModel(appl
                 .addOnSuccessListener { document ->
                     if (document != null && document.exists()) {
                         val isVisible = document.getBoolean("isVisible") ?: false
-                        val radius = document.getLong("radius")?.toInt() ?: 0  // Загружайте фактическое значение угла
+                        val radius = document.getLong("radius")?.toInt() ?: 0
                         isDateVisible.value = isVisible
                         cornerRadius.value = radius
                     } else {

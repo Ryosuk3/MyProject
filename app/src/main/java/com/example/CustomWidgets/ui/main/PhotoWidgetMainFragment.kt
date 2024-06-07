@@ -288,7 +288,6 @@ class PhotoWidgetMainFragment : Fragment() {
                     remoteViews.setImageViewBitmap(R.id.widget_image_view, bitmap)
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    // Обработка ошибки
                     remoteViews.setTextViewText(R.id.widget_image_view, "Ошибка при загрузке изображения")
                 }
             }
@@ -402,7 +401,7 @@ class PhotoWidgetMainFragment : Fragment() {
     private fun saveCornerRadiusInPrefs(radius: Int) {
         val sharedPreferences = requireActivity().getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putInt("corner_radius", radius)  // Измените ключ на "corner_radius"
+        editor.putInt("corner_radius", radius)
         editor.apply()
     }
 
